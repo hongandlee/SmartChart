@@ -1,16 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/doctor/:path*",
-      "destination": "http://13.125.22.145:8080/:path*"
-    },
-    {
-      "source": "/patient/:path*",
-      "destination": "http://13.125.22.145:8080/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/:path*",
+      "destination": "http://13.125.227.145:8080/:path*"
     }
   ]
 }
