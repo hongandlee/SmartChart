@@ -1,12 +1,16 @@
 {
   "rewrites": [
     {
-      "source": "/auth/kakao/callback/:path*",
-      "destination": "http://13.125.227.145:8080/auth/kakao/callback/:path*"
+      "source": "/doctor/:path*",
+      "destination": "http://13.125.22.145:8080/:path*"
     },
     {
-      "source": "/:path*",
-      "destination": "http://13.125.227.145:8080/:path*"
+      "source": "/patient/:path*",
+      "destination": "http://13.125.22.145:8080/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
