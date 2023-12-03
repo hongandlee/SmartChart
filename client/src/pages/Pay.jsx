@@ -33,7 +33,7 @@ const Pay = () => {
     };
 
     fetchData();
-  }, []);
+  }, [list]);
 
   const handlePayment = async (id) => {
     try {
@@ -149,6 +149,7 @@ const Pay = () => {
                     padding="5px"
                     borderRadius="7px"
                     onClick={() => handlePayment(item.id)}
+                    disabled={item.patientPaymentStatus === "완료"}
                   >
                     진료비 내기
                   </Button>
