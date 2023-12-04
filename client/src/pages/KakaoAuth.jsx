@@ -14,13 +14,14 @@ const KakaoAuth = () => {
           { code }
         );
         console.log(response);
+        console.log(code);
         navigate("/mypage");
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, [code]);
+  }, []);
 
   return <div>KakaoAuth</div>;
 };
