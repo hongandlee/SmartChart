@@ -18,6 +18,7 @@ const Accounting = () => {
     startDate: "",
     endDate: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleDateChange = (e) => {
     const { name, value } = e.target;
@@ -93,6 +94,7 @@ const Accounting = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         await axios
           .get("/doctor/month-sales-view", {
@@ -101,6 +103,7 @@ const Accounting = () => {
             },
           })
           .then((res) => setData(res.data));
+        setIsLoading(false);
       } catch (err) {
         toast.error("데이터를 읽어오는데 실패했습니다.");
       }

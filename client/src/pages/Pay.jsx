@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { palette } from "../styles/GlobalStyles";
 import Button from "../components/Button";
@@ -7,6 +7,7 @@ import PatientBill from "../components/PatientBill";
 import axios from "axios";
 import { Container, Header, Wrapper } from "../styles/CommonStyle";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const Pay = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,25 +16,26 @@ const Pay = () => {
   const [patient, setPatient] = useState({});
   const [total, setTotal] = useState(0);
   const [id, setId] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleModal = (itemId) => {
     setSelectedItemId(itemId);
     setIsModalOpen(!isModalOpen);
   };
 
+  const fetchData = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get("/patient/cost-view", {});
+      setList(response.data.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/patient/cost-view", {});
-
-        setList(response.data.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchData();
-  }, [list]);
+  }, [fetchData]);
 
   const handlePayment = async (id) => {
     try {
@@ -78,7 +80,6 @@ const Pay = () => {
             amount: rsp.paid_amount,
             reservationId: id,
           };
-
           fetch("/patient/vertifyIamport", {
             method: "POST",
             headers: {
@@ -111,6 +112,8 @@ const Pay = () => {
       <Wrapper>
         <Header>진료비</Header>
         <TableContainer>
+          {isLoading && <Loader />}
+
           <TableHeader>
             <TableCell>예약번호</TableCell>
             <TableCell>병원명</TableCell>

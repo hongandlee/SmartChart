@@ -4,30 +4,8 @@ import { styled } from "styled-components";
 import axios from "axios";
 import Invoice from "./Invoice";
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 
-const prevCost = [
-  // {
-  //   cost: 19914,
-  //   treatment: "마취료",
-  // },
-  // {
-  //   cost: 158094,
-  //   treatment: "입원료",
-  // },
-  // {
-  //   cost: 200000,
-  //   treatment: "x-ray",
-  // },
-  // {
-  //   cost: 400000,
-  //   treatment: "물리치료",
-  // },
-];
-const total = [
-  {
-    sum: 778008,
-  },
-];
 const BillingComponent = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -37,14 +15,17 @@ const BillingComponent = () => {
   const [patientInfo, setPatientInfo] = useState([]);
   const [cost, setCost] = useState([]);
   const [prevCost, setPrevCost] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(`/doctor/cost-view/${id}`);
         setPatientInfo(response.data.data[0]);
         setCost(response.data.data2);
         setPrevCost(response.data.data3);
+        setIsLoading(false);
       } catch (error) {
         toast.error("데이터를 읽어오는데 실패했습니다.");
       }
@@ -56,10 +37,10 @@ const BillingComponent = () => {
   return (
     <Container>
       <Header>의료비 청구</Header>
+      {isLoading && <Loader />}
       <Invoice
         patientInfo={patientInfo}
         id={id}
-        total={total}
         cost={cost}
         prevCost={prevCost}
         isDoctor={isDoctor}

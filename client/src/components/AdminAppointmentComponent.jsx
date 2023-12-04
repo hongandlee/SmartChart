@@ -8,10 +8,10 @@ import SendSMS from "./SendSMS";
 import axios from "axios";
 import { Container, Header, Wrapper } from "../styles/CommonStyle";
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 
 const AdminAppointmentComponent = () => {
   const navigate = useNavigate();
-
   const [searchUsername, setSearchUsername] = useState("");
   const [searchDate, setSearchDate] = useState("");
   const [filteredAppointments, setFilteredAppointments] = useState([]);
@@ -21,9 +21,11 @@ const AdminAppointmentComponent = () => {
   const [appointmentModals, setAppointmentModals] = useState(
     appointments.map(() => false)
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get("/doctor/reservation-view", {
           headers: {
@@ -31,6 +33,7 @@ const AdminAppointmentComponent = () => {
           },
         });
         setAppointments(response.data.data);
+        setIsLoading(false);
       } catch (error) {
         toast.error("데이터를 읽어오는데 실패했습니다.");
       }
@@ -61,7 +64,6 @@ const AdminAppointmentComponent = () => {
   };
 
   const handleClickBillingButton = (appointment) => {
-    // 이거 대신 axios로 데이터 받아와서 navigate로 넘겨주기
     navigate(`/billing?id=${appointment.id}`, {
       state: appointment,
     });
@@ -85,6 +87,7 @@ const AdminAppointmentComponent = () => {
     <Container>
       <Wrapper>
         <Header>예약관리</Header>
+        {isLoading && <Loader />}
         <Modal isOpen={isSMSModalOpen} handleModal={handleSMSModal}>
           <SendSMS SMSInfo={SMSInfo} />
         </Modal>

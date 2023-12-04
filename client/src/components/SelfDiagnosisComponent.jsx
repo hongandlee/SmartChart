@@ -6,11 +6,13 @@ import { answerAtom } from "../stores/answerAtom";
 import { questions } from "../assets/questions";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 
 const SelfDiagnosisComponent = ({ id }) => {
   const [answers, setAnswers] = useRecoilState(answerAtom);
   const [data, setData] = useState([]);
   const localStorageUserRole = localStorage.getItem("userRole");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAnswer = (index, value) => {
     const newAnswers = [...answers];
@@ -24,29 +26,28 @@ const SelfDiagnosisComponent = ({ id }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (localStorageUserRole === "DOCTOR")
-        try {
-          const response = await axios.post(
-            `/doctor/health-check`,
-            {
-              patientId: id,
+      if (localStorageUserRole === "DOCTOR") setIsLoading(true);
+
+      try {
+        const response = await axios.post(
+          `/doctor/health-check`,
+          {
+            patientId: id,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
             },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          setData(response.data.data);
-          if (response.data.data.length === 0) {
-            toast.error("환자가 아직 체크하지 않았습니다.");
           }
-        } catch (error) {
-          toast.error(error);
-          console.error(error);
+        );
+        setData(response.data.data);
+        if (response.data.data.length === 0) {
+          toast.error("환자가 아직 체크하지 않았습니다.");
         }
-      else {
-        console.log(localStorageUserRole, "userrole이 의사가 아니다?");
+        setIsLoading(false);
+      } catch (error) {
+        toast.error(error);
+        console.error(error);
       }
     };
 
@@ -57,6 +58,7 @@ const SelfDiagnosisComponent = ({ id }) => {
     <Table>
       <Subject>
         <Title>기본 건강 체크</Title>
+        {isLoading && <Loader />}
         <Body>
           {data.length !== 0
             ? data.map(({ questionNumber, answer, idx }) => (

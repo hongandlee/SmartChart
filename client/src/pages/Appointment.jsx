@@ -10,6 +10,7 @@ import { dateAtom, selectedOptionState } from "../stores/dateAtom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Container, Header, Wrapper } from "../styles/CommonStyle";
+import Loader from "../components/Loader";
 
 const availableTimes = [
   "09:00:00",
@@ -29,9 +30,11 @@ const Appointment = () => {
   const [checkAvailablity, setCheckAvailablity] = useState(false);
   const selectedDate = useRecoilValue(dateAtom);
   const selectedTime = useRecoilValue(selectedOptionState);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(`/patient/reservation-view/${id}`, {
           headers: {
@@ -41,6 +44,7 @@ const Appointment = () => {
           withCredentials: true,
         });
         setInfo(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -54,32 +58,36 @@ const Appointment = () => {
       reservationDate: selectedDate,
       reservationTime: selectedTime,
     };
-    axios
-      .post("/patient/check-reservation", data)
-      .then((response) => {
-        toast.success("예약 가능한 시간입니다.");
-        setCheckAvailablity(true);
-      })
-      .catch((error) => {
-        toast.error("예약불가능한 시간입니다.");
-      });
+    setIsLoading(true);
+    try {
+      const response = axios.post("/patient/check-reservation", data);
+      setCheckAvailablity(true);
+      toast.success("예약 가능한 시간입니다.");
+      setIsLoading(false);
+    } catch (error) {
+      toast.error("예약불가능한 시간입니다.");
+    }
   };
   const handleSave = () => {
-    axios
-      .post(`/patient/reservation`, {
-        doctorId: info.doctorId,
-        reservationDate: selectedDate,
-        reservationTime: selectedTime,
-      })
-      .then(toast.success("예약되었습니다."), navigate("/selfdiagnosis"))
-
-      .catch((error) => toast.error("예약이 되지 않았습니다."));
+    setIsLoading(true);
+    try {
+      axios
+        .post(`/patient/reservation`, {
+          doctorId: info.doctorId,
+          reservationDate: selectedDate,
+          reservationTime: selectedTime,
+        })
+        .then(toast.success("예약되었습니다."), navigate("/selfdiagnosis"));
+      setIsLoading(false);
+    } catch (error) {
+      toast.error("예약이 되지 않았습니다.");
+    }
   };
   return (
     <Container>
       <Wrapper>
         <Header>병원 예약하기</Header>
-
+        {isLoading && <Loader />}
         <FirstColumnHalfWrapper>
           <ColumnDivideWrapper>
             <RowDivideWrapper>

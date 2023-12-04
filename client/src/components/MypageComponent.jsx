@@ -6,13 +6,16 @@ import { userInfoAtom } from "../stores/userInfo";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
+import Loader from "./Loader";
 
 const MypageComponent = () => {
   const [userInfo, setUserInfo] = useRecoilState(userInfoAtom);
   const [appointmentList, setAppointmentList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get("/patient/page-view", {
           headers: {
@@ -28,12 +31,14 @@ const MypageComponent = () => {
           );
         setUserInfo(response.data.myPage[0]);
         setAppointmentList(latestAppointments);
+        setIsLoading(false);
       } catch (err) {}
     };
     fetchData();
   }, []);
 
   const cancelReservation = async (id) => {
+    setIsLoading(true);
     const reservationId = String(id);
     try {
       await axios.delete("/patient/page-cancel", {
@@ -49,6 +54,7 @@ const MypageComponent = () => {
       );
       setAppointmentList(updatedAppointmentList);
       toast.success("예약이 취소되었습니다.");
+      setIsLoading(false);
     } catch (err) {
       toast.error("예약 취소 중 오류가 발생했습니다.");
     }
@@ -67,6 +73,7 @@ const MypageComponent = () => {
     setUserInfo({ ...userInfo, [field]: value });
   };
   const handleUpdate = async () => {
+    setIsLoading(true);
     try {
       await axios.patch("/patient/page", {
         name: userInfo.name,
@@ -78,6 +85,7 @@ const MypageComponent = () => {
         },
       });
       toast.success("저장되었습니다.");
+      setIsLoading(false);
     } catch (error) {
       toast.error("관리자에게 문의해주세요");
     }
@@ -87,6 +95,8 @@ const MypageComponent = () => {
     <MypageContainer>
       <MypageWrapper>
         <Header>마이페이지</Header>
+        {isLoading && <Loader />}
+
         <FirstColumnHalfWrapper>
           <ColumnDivideWrapper>
             <RowDivideWrapper>

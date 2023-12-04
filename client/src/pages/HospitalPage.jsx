@@ -6,18 +6,22 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import { hospitalAtom } from "../stores/userInfo";
+import Loader from "../components/Loader";
 
 const HospitalPage = () => {
   const [hospitalInfo, setHospitalInfo] = useRecoilState(hospitalAtom);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const response = await axios.get("/doctor/hospital-view", {
         headers: {
           "Content-Type": "application/json",
         },
       });
       setHospitalInfo(response.data.hospitalPage[0]);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -48,6 +52,7 @@ const HospitalPage = () => {
     <Container>
       <Wrapper>
         <Header>병원페이지</Header>
+        {isLoading && <Loader />}
         <Table>
           <tbody>
             <TR>
