@@ -112,7 +112,7 @@ const NavItem = () => {
         )}
       </NavItemWrapper>
       <NavItemWrapper>
-        {!token ? <NavLink to="/teleConsult">실시간 진료 상담</NavLink> : ""}
+        {!token ? <NavLink to="/chat">실시간 진료 상담</NavLink> : ""}
       </NavItemWrapper>
       {/* TODO:여기가 드롭다운이 생길 부분 */}
       <NavItemWrapper>

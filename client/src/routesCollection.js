@@ -19,7 +19,6 @@ import Billing from "./pages/Billing";
 import SearchHospital from "./pages/SearchHospital";
 import MedicalCareManagement from "./pages/MedicalCareManagement";
 import KakaoAuth from "./pages/KakaoAuth";
-import ChatRoom from "./components/ChatRoom";
 
 const RoutesCollection = () => {
   return (
@@ -35,12 +34,11 @@ const RoutesCollection = () => {
       <Route path={path.hospitalPage} element={<HospitalPage />} />
       <Route path={path.adminAppointment} element={<AdminAppointment />} />
       <Route path={path.adminWaitingList} element={<AdminWaitingList />} />
-      <Route path={path.teleConsult} element={<TeleConsult />} />
+      <Route path={path.teleConsult} element={<Chat />} />
       <Route path={path.accounting} element={<Accounting />} />
       <Route path={path.billing} element={<Billing />} />
       <Route path={path.search} element={<SearchHospital />} />
       <Route path={path.kakao} element={<KakaoAuth />} />
-      <Route path={path.chatroom} element={<ChatRoom />} />
 
       <Route
         path={path.medicalcaremanagement}
