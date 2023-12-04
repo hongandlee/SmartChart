@@ -11,10 +11,8 @@ export const path = {
   adminAppointment: "/adminAppointment",
   adminWaitingList: "/doctor/waiting-list-view",
   accounting: "/accounting",
-  teleConsult: "/teleConsult",
   billing: "/billing",
   search: "/searchHospital",
   medicalcaremanagement: "/medicalcaremanagement/:id",
   kakao: "/auth/kakao/callback",
-  chatroom: "/chatroom",
 };

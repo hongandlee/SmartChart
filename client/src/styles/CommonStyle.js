@@ -144,19 +144,24 @@ export const Container = styled.section`
   align-items: center;
   min-width: 900px;
   min-height: calc(100vh - 80px);
+  height: auto;
+  position: relative;
+  overflow-y: auto;
 `;
-
 export const Wrapper = styled.div`
   display: flex;
-  flex: 1;
+  position: absolute;
+  top: 100px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 100px 200px 100px;
-  border-radius: 15px;
-  position: relative;
+  width: 40%;
+  min-width: 1100px;
+  padding: 40px 10px 10px 10px;
   border: 1px solid ${palette.gray.border};
+  border-radius: 20px;
+  height: auto;
 `;
+
 export const Header = styled.div`
   font-weight: bold;
   margin-bottom: 20px;

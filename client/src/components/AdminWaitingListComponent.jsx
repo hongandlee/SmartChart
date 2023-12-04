@@ -146,9 +146,9 @@ const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  min-width: 1400px;
-  min-height: 800px;
+  min-width: 1000px;
   overflow-x: auto;
+  margin-top: 100px;
 `;
 
 const Today = styled.div`

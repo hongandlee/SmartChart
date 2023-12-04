@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import Loader from "./Loader";
+import { Wrapper } from "../styles/CommonStyle";
 
 const MypageComponent = () => {
   const [userInfo, setUserInfo] = useRecoilState(userInfoAtom);
@@ -60,15 +61,6 @@ const MypageComponent = () => {
     }
   };
 
-  const columns = [
-    { name: "", width: "10%" },
-    { name: "병원명", width: "15%" },
-    { name: "예약 날짜", width: "25%" },
-    { name: "예약 시간", width: "20%" },
-    { name: "예약 상태", width: "15%" },
-    { name: "", width: "15%" },
-  ];
-
   const handleChange = (field, value) => {
     setUserInfo({ ...userInfo, [field]: value });
   };
@@ -93,7 +85,7 @@ const MypageComponent = () => {
 
   return (
     <MypageContainer>
-      <MypageWrapper>
+      <Wrapper>
         <Header>마이페이지</Header>
         {isLoading && <Loader />}
 
@@ -137,47 +129,50 @@ const MypageComponent = () => {
           Update
         </Button>
         <ColumnHalfWrapper>
-          {/* <Header>예약리스트</Header> */}
-          <Table>
-            <AppointmentListTitle>
-              {columns.map((column, index) => (
-                <ListRowDivideWrapper
-                  width={column.width}
-                  index={index}
-                  key={index}
-                >
-                  {column.name}
-                </ListRowDivideWrapper>
-              ))}
-            </AppointmentListTitle>
-
-            <AppointmentListBody>
-              {appointmentList.map((item, index) => (
-                <ListWrapper key={index}>
-                  <div style={{ width: "10%" }}>{item.id}</div>
-                  <div style={{ width: "15%" }}>{item.hospitalName}</div>
-                  <div style={{ width: "25%" }}>{item.reservationDate}</div>
-                  <div style={{ width: "20%" }}>{item.reservationTime}</div>
-                  <div style={{ width: "15%" }}>{item.reservationStatus}</div>
-
-                  <ButtonContainer style={{ width: "15%" }}>
-                    <Button
-                      width="70%"
-                      height="60%"
-                      padding="5px"
-                      fontSize="15px"
-                      borderRadius="10px"
-                      onClick={() => cancelReservation(item.id)}
+          <TableContainer>
+            <TableHeader>
+              <TableCell>예약번호</TableCell>
+              <TableCell>병원명</TableCell>
+              <TableCell>예약 날짜</TableCell>
+              <TableCell>예약 시간</TableCell>
+              <TableCell>예약 상태</TableCell>
+              <TableCell>예약 취소</TableCell>
+            </TableHeader>
+            {appointmentList.length > 0 ? (
+              <>
+                {appointmentList.map((item, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{item.id}</TableCell>
+                    <TableCell>{item.hospitalName}</TableCell>
+                    <TableCell>{item.reservationDate}</TableCell>
+                    <TableCell>{item.reservationTime}</TableCell>
+                    <TableCell
+                      isIncomplete={item.reservationStatus === "미완료"}
                     >
-                      예약 취소
-                    </Button>
-                  </ButtonContainer>
-                </ListWrapper>
-              ))}
-            </AppointmentListBody>
-          </Table>
+                      {item.reservationStatus}
+                    </TableCell>
+
+                    <TableCell>
+                      <Button
+                        padding="10px 5px"
+                        fontSize="15px"
+                        borderRadius="5px"
+                        onClick={() => cancelReservation(item.id)}
+                      >
+                        예약 취소
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </>
+            ) : (
+              <TableRow>
+                <TableCell>예약 내역이 없습니다.</TableCell>
+              </TableRow>
+            )}
+          </TableContainer>
         </ColumnHalfWrapper>
-      </MypageWrapper>
+      </Wrapper>
     </MypageContainer>
   );
 };
@@ -204,9 +199,8 @@ const MypageWrapper = styled.div`
   height: 80%;
   min-width: 950px;
   min-height: 800px;
-  /* border: 1px solid ${palette.gray.border}; */
-  /* border-radius: 20px; */
   padding: 100px 0;
+  border: 1px solid ${palette.gray.border};
 `;
 const Tip = styled.div`
   font-size: 11px;
@@ -234,33 +228,11 @@ const ColumnHalfWrapper = styled.div`
   margin-bottom: 40px;
 `;
 
-const Table = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 const ColumnDivideWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
 `;
-const AppointmentListTitle = styled.div`
-  display: flex;
-  width: 90%;
-  height: 10%;
-  background-color: ${palette.gray.light};
-  border-top: 1px solid ${palette.gray.border};
-  border-bottom: 1px solid ${palette.gray.border};
-`;
-const AppointmentListBody = styled.div`
-  display: flex;
-  width: 90%;
-  height: 20%;
-  flex-direction: column;
-  margin-bottom: 80px;
-`;
-
 const FirstColumnHalfWrapper = styled(ColumnHalfWrapper)`
   border: 0.5px solid ${palette.gray.dark};
   width: 80%;
@@ -279,25 +251,6 @@ const RowDivideWrapper = styled.div`
   padding: 20px;
 `;
 
-const ListRowDivideWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: ${(props) =>
-    (props.index === 0 || props.index === 5 || props.index === 6) && "center"};
-  width: ${(props) => (props.width ? props.width : "100%")};
-  height: 100%;
-  font-weight: bold;
-  font-size: 16px;
-  border-left: ${(props) =>
-    props.index !== 0 && `1px solid ${palette.gray.border}`};
-  padding-left: ${(props) =>
-    props.index !== 0 && props.index !== 5 && props.index !== 6 && "10px"};
-  background-color: ${(props) =>
-    props.index === 0 ? palette.gray.light : "transparent"};
-`;
-
 const InfoTitle = styled.div`
   width: 30%;
 `;
@@ -306,20 +259,38 @@ const InfoValue = styled.input`
   width: 60%;
   border: none;
 `;
-const ListWrapper = styled.div`
+
+const TableContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid ${palette.gray.border};
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 20px;
 `;
 
-const ButtonContainer = styled.div`
-  width: ${(props) => props.width || "10%"};
+const TableRow = styled.div`
   display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+const TableHeader = styled(TableRow)`
+  font-weight: bold;
+  background-color: #f0f0f0;
+  display: flex;
+  padding: 8px;
+`;
+
+const TableCell = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  white-space: nowrap;
+  color: ${(props) => (props.isIncomplete ? "#FF0000" : "")};
 `;

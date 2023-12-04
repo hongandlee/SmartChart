@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import { hospitalAtom } from "../stores/userInfo";
 import Loader from "../components/Loader";
+import { Container, Header, Wrapper } from "../styles/CommonStyle";
 
 const HospitalPage = () => {
   const [hospitalInfo, setHospitalInfo] = useRecoilState(hospitalAtom);
@@ -112,42 +113,14 @@ const HospitalPage = () => {
 };
 
 export default HospitalPage;
-const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 900px;
-  min-height: calc(100vh - 80px);
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  width: 80%;
-  min-height: calc(100vh - 100px);
-  min-width: 500px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 200px 100px;
-  border-radius: 15px;
-  position: relative;
-  border: 1px solid ${palette.gray.border};
-`;
-const Header = styled.div`
-  font-weight: bold;
-  margin-bottom: 20px;
-  font-size: 25px;
-  position: absolute;
-  top: 40px;
-`;
 
 const Table = styled.table`
   border-collapse: collapse;
   width: 60%;
   min-width: 400px;
   height: 500px;
-  margin-bottom: 15px;
+  margin-top: 100px;
+  margin-bottom: 30px;
 `;
 
 const TH = styled.th`

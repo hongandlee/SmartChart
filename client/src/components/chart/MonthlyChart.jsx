@@ -45,7 +45,7 @@ const options = {
     },
     title: {
       display: true,
-      text: "주별 매출과 환자 수 추이",
+      text: "월별 매출과 환자 수 추이",
     },
   },
   scales: {
