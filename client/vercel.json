@@ -13,8 +13,8 @@
       "destination": "http://13.125.227.145:8080/patient/:path*"
     },
     {
-      "source": "/chat/:path*",
-      "destination": "http://13.125.227.145:8080/chat/:path*"
+      "source": "/ws/chat/:path*",
+      "destination": "http://13.125.227.145:8080/ws/chat/:path*"
     },
     {
       "source": "/(.*)",
