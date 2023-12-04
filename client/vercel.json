@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/auth/kakao/callback",
-      "destination": "/auth/kakao/callback"
+      "destination": "https://smartchart.vercel.app/auth/kakao/callback"
     },
     {
       "source": "/:path*",
