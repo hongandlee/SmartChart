@@ -20,7 +20,7 @@ const HospitalPage = () => {
       setHospitalInfo(response.data.hospitalPage[0]);
     };
     fetchData();
-  }, []);
+  }, [hospitalInfo]);
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -38,7 +38,6 @@ const HospitalPage = () => {
         hospitalIntroduction: hospitalInfo.hospitalIntroduce,
       });
       toast.success("성공적으로 업데이트 되었습니다.");
-      window.location.reload();
     } catch (error) {
       toast.error("에러가 발생하였습니다.");
     }
