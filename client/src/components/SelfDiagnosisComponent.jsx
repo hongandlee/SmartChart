@@ -27,7 +27,7 @@ const SelfDiagnosisComponent = ({ id }) => {
       if (localStorageUserRole === "DOCTOR")
         try {
           const response = await axios.post(
-            `/doctor/health-check/`,
+            `/doctor/health-check`,
             {
               patientId: id,
             },
