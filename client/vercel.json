@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/auth/kakao/callback/:path*",
-      "destination": "http://13.125.227.145:8080/auth/kakao/callback/:path*"
+      "source": "!/auth/kakao/callback",
+      "destination": "https://smartchart.vercel.app/auth/kakao/callback"
     },
     {
       "source": "/:path*",
