@@ -26,28 +26,30 @@ const SelfDiagnosisComponent = ({ id }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (localStorageUserRole === "DOCTOR") setIsLoading(true);
+      if (localStorageUserRole === "DOCTOR") {
+        setIsLoading(true);
 
-      try {
-        const response = await axios.post(
-          `/doctor/health-check`,
-          {
-            patientId: id,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
+        try {
+          const response = await axios.post(
+            `/doctor/health-check`,
+            {
+              patientId: id,
             },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          setData(response.data.data);
+          if (response.data.data.length === 0) {
+            toast.error("환자가 아직 체크하지 않았습니다.");
           }
-        );
-        setData(response.data.data);
-        if (response.data.data.length === 0) {
-          toast.error("환자가 아직 체크하지 않았습니다.");
+          setIsLoading(false);
+        } catch (error) {
+          toast.error(error);
+          console.error(error);
         }
-        setIsLoading(false);
-      } catch (error) {
-        toast.error(error);
-        console.error(error);
       }
     };
 
