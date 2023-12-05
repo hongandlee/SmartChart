@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import styled from "styled-components";
@@ -13,6 +13,7 @@ const ChatApp = () => {
   const [messages, setMessages] = useState([]);
   const [connected, setConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
+  const messagesContainerRef = useRef(null);
 
   var colors = [
     // 색상 배열
@@ -85,6 +86,10 @@ const ChatApp = () => {
   const onMessageReceived = (payload) => {
     let message = JSON.parse(payload.body);
     setMessages((messages) => [...messages, message]);
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop =
+        messagesContainerRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -94,28 +99,35 @@ const ChatApp = () => {
       }
     };
   }, []);
+  useEffect(() => {
+    // 스크롤을 맨 아래로 이동하는 코드
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop =
+        messagesContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   return (
     <Container>
       <Wrapper>
         {!connected && !isConnecting && (
           <ConnectionForm>
-            <input
+            <UsernameInput
               type="text"
               placeholder="닉네임을 입력하세요"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <button onClick={connect} disabled={!username}>
+            <SubmitButton onClick={connect} disabled={!username}>
               채팅 참여
-            </button>
+            </SubmitButton>
           </ConnectionForm>
         )}
         {isConnecting && <div>연결 중...</div>}
         {connected && (
           <ChatContainer>
             <ChatContent>
-              <MessagesContainer>
+              <MessagesContainer ref={messagesContainerRef}>
                 {messages.map((msg, index) => (
                   <MessageRow
                     key={index}
@@ -171,7 +183,7 @@ const Avatar = styled.div`
 `;
 const MessagesContainer = styled.div`
   padding: 10px;
-  height: 400px;
+  height: 100%;
   overflow-y: auto;
 `;
 const MessageRow = styled.div`
@@ -200,8 +212,8 @@ const ChatText = styled.div`
 `;
 
 const ConnectionForm = styled.div`
-  width: 500px;
-  height: 300px;
+  min-width: 1000px;
+  min-height: 800px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: white;
@@ -209,50 +221,51 @@ const ConnectionForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  input {
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 16px;
-    width: 100%;
-  }
-
-  button {
-    margin-top: auto;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 15px;
-    background-color: ${palette.primary.blue};
-    color: white;
-    cursor: pointer;
-    width: 25%;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    &:disabled {
-      background-color: #ccc; /* 비활성 상태 배경색 */
-      color: #666; /* 비활성 상태 텍스트 색상 */
-      cursor: not-allowed; /* 비활성 상태에서 커서 스타일 변경 */
-    }
+  align-items: center;
+`;
+const UsernameInput = styled.input`
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 16px;
+  width: 80%;
+`;
+const SubmitButton = styled.button`
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px;
+  background-color: ${palette.primary.blue};
+  color: white;
+  cursor: pointer;
+  width: 25%;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin-top: 20px;
+  &:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
   }
 `;
 const ChatContainer = styled.div`
-  width: 500px;
+  width: 1000px;
+  height: 800px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 `;
 
 const ChatContent = styled.div`
-  width: 80%; /* 혹은 적절한 너비를 설정하세요 */
+  width: 100%;
 `;
 const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 20px; /* 상단 여백 조절 */
+  margin-top: 20px;
+  background-color: antiquewhite;
 `;
 
 const MessageInput = styled.input`
@@ -262,7 +275,7 @@ const MessageInput = styled.input`
 `;
 
 const SendButton = styled.button`
-  margin-left: 10px; /* 버튼과 입력창 사이 여백 조절 */
+  margin-left: 10px;
   padding: 12px;
   font-size: 16px;
   background-color: ${palette.primary.blue};
