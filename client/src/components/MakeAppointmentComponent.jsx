@@ -1,6 +1,5 @@
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
-import Loader from "../components/Loader";
 import Maps from "../components/Maps";
 import { Container, Wrapper } from "../styles/CommonStyle";
 

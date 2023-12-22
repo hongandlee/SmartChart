@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Invoice from "./Invoice";
 import { toast } from "react-toastify";
-import { Container, Header } from "../styles/CommonStyle";
+import { Container } from "../styles/CommonStyle";
 import Loader from "./Loader";
 
 const PatientBill = ({ id }) => {

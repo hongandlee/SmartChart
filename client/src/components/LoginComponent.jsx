@@ -22,7 +22,6 @@ import {
   SelectWrapper,
   SignupLink,
 } from "../styles/CommonStyle";
-import kakao from "../assets/kakao_login_medium_wide.png";
 import styled from "styled-components";
 
 const LoginComponent = ({

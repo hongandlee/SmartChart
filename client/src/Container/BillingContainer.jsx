@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import BillingComponent from "../components/BillingComponent";
-import Button from "../components/Button";
-import Modal from "../components/Modal";
-import TreatmentAndCost from "../components/TreatmentAndCost";
 import styled from "styled-components";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { invoiceAtom } from "../stores/invoiceAtom";
@@ -54,11 +51,4 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-`;
-const Buttons = styled.div`
-  display: flex;
-  gap: 100px;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
 `;

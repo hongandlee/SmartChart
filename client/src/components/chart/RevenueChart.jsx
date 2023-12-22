@@ -1,6 +1,5 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import { Wrapper } from "./WeeklyChart";
 import styled from "styled-components";
 
 const options = {

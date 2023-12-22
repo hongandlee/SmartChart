@@ -16,7 +16,6 @@ import AdminWaitingList from "./pages/AdminWaitingList";
 import Accounting from "./pages/Accounting";
 import Billing from "./pages/Billing";
 import MedicalCareManagement from "./pages/MedicalCareManagement";
-import KakaoAuth from "./pages/KakaoAuth";
 import MakeAppointment from "./pages/MakeAppointment";
 
 const RoutesCollection = () => {

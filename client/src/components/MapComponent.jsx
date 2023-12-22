@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { BiCurrentLocation } from "react-icons/bi";
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
-import instance from "./api";
 import axios from "axios";
 import { toast } from "react-toastify";
 

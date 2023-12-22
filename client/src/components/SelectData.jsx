@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import React from "react";
+import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
-import { dateAtom, selectedOptionState } from "../stores/dateAtom";
+import { selectedOptionState } from "../stores/dateAtom";
 
 const SelectData = ({ availableOption, title }) => {
-  const selectedDate = useRecoilValue(dateAtom);
   const [selectedOption, setSelectedOption] =
     useRecoilState(selectedOptionState);
 
@@ -32,7 +31,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  /* flex-direction: column; */
 `;
 
 const OptionSelect = styled.select`
@@ -45,8 +43,4 @@ const OptionSelect = styled.select`
 
 const InfoTitle = styled.div`
   width: 30%;
-`;
-
-const InfoValue = styled.div`
-  width: 70%;
 `;
