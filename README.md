@@ -1,4 +1,4 @@
-![예약취소](https://github.com/hongandlee/apuda/assets/91598778/1346617f-a782-423e-8c94-8a19b9323e80)# SmartChart
+![의사-진료관리](https://github.com/hongandlee/apuda/assets/91598778/0a7819a7-c33d-4fd9-b00d-c9bccb4a7ad8)![의사-진료관리](https://github.com/hongandlee/apuda/assets/91598778/c1542a16-9fd2-4e6e-8844-10c3510acf1a)![의사로그인](https://github.com/hongandlee/apuda/assets/91598778/71b092da-88fe-4b53-8428-d20d48ace998)![예약취소](https://github.com/hongandlee/apuda/assets/91598778/1346617f-a782-423e-8c94-8a19b9323e80)# SmartChart
 
 >
 >
@@ -95,78 +95,72 @@ $ npm start
   <summary>환자-마이페이지 </summary>
     <div markdown="1">
     <img src=https://github.com/hongandlee/apuda/assets/91598778/734a4344-9cd3-4feb-82af-4296feb64aa1/>
-<img src=https://github.com/hongandlee/apuda/assets/91598778/52639210-eeb6-4d25-843d-2468cd81f653/>
+회원정보 수정(전화번호)
+     <img src=https://github.com/hongandlee/apuda/assets/91598778/52639210-eeb6-4d25-843d-2468cd81f653/>
+     예약 취소
+    </div>
+</details><details>
+  <summary>의사-회원가입 </summary>
+    <div markdown="1">
+     ![의사-회원가입](https://github.com/hongandlee/apuda/assets/91598778/27f508a0-1d77-41e9-b577-0ea98652b305)
 
     </div>
-</details><details>
-  <summary>환자- </summary>
+</details>
+<details>
+  <summary>의사-로그인</summary>
     <div markdown="1">
-    </div>
-</details><details>
-  <summary>환자- </summary>
-    <div markdown="1">
-    </div>
-</details><details>
-  <summary>환자- </summary>
-    <div markdown="1">
-    </div>
-</details><details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details><details>
-  <summary>의사- </summary>
-    <div markdown="1">
+     ![의사로그인](https://github.com/hongandlee/apuda/assets/91598778/ee2c48b0-449a-485b-8efd-9780c088c97d)
+
     </div>
 </details>
 <details>
-  <summary>의사- </summary>
+  <summary>의사-예약/진료관리 </summary>
     <div markdown="1">
-    </div>
-</details>
-<details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details>
-<details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details>
-<details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details>
-<details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details>
-<details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details>
-<details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details>
-<details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details>
-<details>
-  <summary>의사- </summary>
-    <div markdown="1">
-    </div>
-</details>
+     ![의사 -예약확정 문자](https://github.com/hongandlee/apuda/assets/91598778/b976c296-5612-4780-ac31-9a5743561a84)
+![의사-진료비청구](https://github.com/hongandlee/apuda/assets/91598778/d1dc6274-3419-40d9-ab29-29cd4c5da0c4)
+![의사- 예약관리 검색](https://github.com/hongandlee/apuda/assets/91598778/55150fbf-2465-4b16-b62b-c8cb6427ebf8)
+     ![의사-진료관리](https://github.com/hongandlee/apuda/assets/91598778/90cc0e72-6d35-4f54-aec6-3e63f2898912)
+     ![의사- 환자의 기본건강체크 확인](https://github.com/hongandlee/apuda/assets/91598778/2ec2a25d-0c0d-401d-92c2-f90374ba3c02)
 
 
+    </div>
+</details>
+<details>
+  <summary>의사-대기환자 관리  </summary>
+    <div markdown="1">
+![의사- 환자 대기 관리](https://github.com/hongandlee/apuda/assets/91598778/8e91f278-6569-4f1a-a5c5-83afe3f4f665)
 
+
+    </div>
+</details>
+<details>
+  <summary>의사-매출관리 </summary>
+    <div markdown="1">
+     ![의사-매출관리](https://github.com/hongandlee/apuda/assets/91598778/2d6236d3-0164-4444-8342-0de119eb290b)
+
+    </div>
+</details>
+<details>
+  <summary>의사-병원페이지 </summary>
+    <div markdown="1">
+     ![의사-병원페이지](https://github.com/hongandlee/apuda/assets/91598778/5294da15-5482-4608-ae94-f0a4e3848e40)
+
+    </div>
+</details>
+<details>
+  <summary>공용-비밀번호 찾기  </summary>
+    <div markdown="1">
+     ![비밀번호찾기](https://github.com/hongandlee/apuda/assets/91598778/6323f76a-406c-49fa-a11f-6075f6544112)
+
+    </div>
+</details>
+<details>
+  <summary>공용-실시간 진료 관리  </summary>
+    <div markdown="1">
+     ![환자-의사 실시간 진료 상담](https://github.com/hongandlee/apuda/assets/91598778/d9630304-02e8-4798-b7b4-9048b3ea3faf)
+
+    </div>
+</details>
 
 
 <br />
