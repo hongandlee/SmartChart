@@ -18,7 +18,7 @@
 - [과제목표](#과제목표)
 - [폴더구조](#폴더구조)
 - [사용기술](#사용기술)
-- [ServiceArchitecture](#Architecture)
+- [ServiceArchitecture](#Service Architecture)
 
 <br />
 
