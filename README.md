@@ -18,6 +18,7 @@
 - [과제목표](#과제목표)
 - [폴더구조](#폴더구조)
 - [사용기술](#사용기술)
+- [ServiceArchitecture](#Architecture)
 
 <br />
 
@@ -200,9 +201,7 @@ https://smartchart.vercel.app
 
 ## 💯과제목표
 
-#### 로그인 
 
-- 
 #### 병원 예약하기
 
 - 
@@ -210,6 +209,8 @@ https://smartchart.vercel.app
 #### 환자 관리하기 
 
 - 
+#### 환자 대기 관리 
+
 
 
 
@@ -357,4 +358,9 @@ https://smartchart.vercel.app
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"/>
 
 </div>
+<br />
+
+## Service Architecture
+<img src=https://github.com/hongandlee/apuda/assets/91598778/3ca4894a-8a4d-4a7b-80c2-b58db391635f/>
+
 <br />
