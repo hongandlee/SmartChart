@@ -1,4 +1,4 @@
-# SmartChart
+![환자-병원예약하기](https://github.com/hongandlee/apuda/assets/91598778/cad4a987-599f-48b8-ad7e-d0e31c02ef3b)# SmartChart
 
 >
 >
@@ -58,30 +58,114 @@ $ npm start
 ## 📝프로젝트 gif
 
 <details>
-  <summary>1 </summary>
+  <summary>환자-회원가입 </summary>
     <div markdown="1">
+     ![환자-회원가입](https://github.com/hongandlee/apuda/assets/91598778/894082a9-59f1-4cd2-88e1-7c360a844a16)
+
     </div>
 </details>
-
-
 <details>
-  <summary>2</summary>
+  <summary>환자-로그인</summary>
     <div markdown="1">
+     ![환자로그인](https://github.com/hongandlee/apuda/assets/91598778/5d42578a-fba4-4392-ad70-136d12774e3d)
+
     </div>
-</details>
-
-<details>
-  <summary>3</summary>
+</details><details>
+  <summary>환자-병원예약하기 </summary>
     <div markdown="1">
-    </div>
-</details>
+    ![환자-내위치 중심 병원찾기](https://github.com/hongandlee/apuda/assets/91598778/43618274-8105-4a6f-9750-ab159e3fa4bd)
+![환자-병원예약하기(예약불가)](https://github.com/hongandlee/apuda/assets/91598778/eee10e04-4e89-475f-ad8d-6c2c601be711)
+![환자-병원예약하기](https://github.com/hongandlee/apuda/assets/91598778/1d3425c7-863f-4b67-8778-8842041f874d)
 
-<details>
-  <summary> 4  </summary>
-    <div markdown="1">
      
     </div>
+</details><details>
+  <summary>환자-진료비 내기  </summary>
+    <div markdown="1">
+     ![환자-진료비내기](https://github.com/hongandlee/apuda/assets/91598778/a5b85fc4-0aaa-4427-985d-587bd19fa820)
+![환자-진료비 보기](https://github.com/hongandlee/apuda/assets/91598778/6e28563a-e9a3-40e8-b852-437d36604ed1)
+
+    </div>
+</details><details>
+  <summary>환자-스마트문진 </summary>
+    <div markdown="1">![환자-스마트문진](https://github.com/hongandlee/apuda/assets/91598778/9715e828-c226-461f-b988-a47c617928e0)
+
+    
+    </div>
+</details><details>
+  <summary>환자-마이페이지 </summary>
+    <div markdown="1">
+     ![환자-전화번호 수정](https://github.com/hongandlee/apuda/assets/91598778/734a4344-9cd3-4feb-82af-4296feb64aa1)
+
+    </div>
+</details><details>
+  <summary>환자- </summary>
+    <div markdown="1">
+    </div>
+</details><details>
+  <summary>환자- </summary>
+    <div markdown="1">
+    </div>
+</details><details>
+  <summary>환자- </summary>
+    <div markdown="1">
+    </div>
+</details><details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details><details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
 </details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+<details>
+  <summary>의사- </summary>
+    <div markdown="1">
+    </div>
+</details>
+
+
 
 
 
