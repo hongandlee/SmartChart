@@ -1,8 +1,9 @@
-# SmartChart
+#  서비스 소개
 
->
->
 <img src=https://github.com/hongandlee/apuda/assets/91598778/c95f84a2-e2f4-43dc-a1f7-6ca8bace5730/>
+<br/>
+
+## [👍 SmartChart 사용해보기](https://smartchart.vercel.app)
 
 
 <br />
