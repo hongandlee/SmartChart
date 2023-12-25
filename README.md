@@ -243,7 +243,6 @@ https://smartchart.vercel.app
  ┃ ┣ 📜ChatIcon.jsx
  ┃ ┣ 📜doctor_female.png
  ┃ ┣ 📜doctor_male.png
- ┃ ┣ 📜kakao_login_medium_wide.png
  ┃ ┣ 📜patient.png
  ┃ ┣ 📜questions.js
  ┃ ┗ 📜smartLogo.png
@@ -286,6 +285,7 @@ https://smartchart.vercel.app
  ┃ ┣ 📜Modal.jsx
  ┃ ┣ 📜MypageComponent.jsx
  ┃ ┣ 📜NavItem.jsx
+ ┃ ┣ 📜Pagination.jsx
  ┃ ┣ 📜PatientBill.jsx
  ┃ ┣ 📜PayComponent.jsx
  ┃ ┣ 📜SalesTable.jsx
@@ -323,6 +323,7 @@ https://smartchart.vercel.app
  ┃ ┗ 📜TeleConsult.jsx
  ┣ 📂stores
  ┃ ┣ 📜answerAtom.js
+ ┃ ┣ 📜billingStatusAtom.js
  ┃ ┣ 📜dateAtom.js
  ┃ ┣ 📜invoiceAtom.js
  ┃ ┣ 📜sizeStore.js
@@ -335,7 +336,8 @@ https://smartchart.vercel.app
  ┣ 📜App.js
  ┣ 📜index.css
  ┣ 📜index.js
- ┗ 📜routesCollection.js
+ ┣ 📜routesCollection.js
+ ┗ 📜setupProxy.js
 
 
 ```
